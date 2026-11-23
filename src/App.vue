@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import fullStack from './photos/full-stakc.jpg'
@@ -112,7 +111,7 @@ onUnmounted(() => {
 
                         <div class="list-group-item bg-transparent text-white border-info">
                             <strong>Samarqand Davlat University </strong> | Online & Distance Learning
-                            <div>2025 - Present</div>
+                            <div>2026 - Present</div>
                         </div>
 
                     </div>
