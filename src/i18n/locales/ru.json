@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "role": "Full-Stack разработчик"
+  },
+  "about": {
+    "title": "Обо мне",
+    "description": "Я Full-Stack разработчик с опытом работы как во Frontend, так и в Backend. Работаю с PHP, Symfony, JavaScript, MySQL и Vue.js, умею создавать проекты с нуля. Я стремлюсь постоянно учиться, развиваться и принимать новые вызовы."
+  },
+  "workEducation": {
+    "title": "Работа и образование",
+    "experienceTitle": "Опыт работы",
+    "currentStatus": "Пока не работаю :)",
+    "comingSoon": "Скоро...",
+    "workPeriod": "2009 — настоящее время",
+    "educationTitle": "Образование",
+    "courseTitle": "Full-Stack веб-разработка (уровень Junior)",
+    "courseType": "Онлайн-курс",
+    "coursePeriod": "2025 — 2026",
+    "university": "Самаркандский государственный университет",
+    "universityType": "Онлайн и дистанционное обучение",
+    "universityPeriod": "2026 — настоящее время"
+  },
+  "skills": {
+    "title": "Навыки",
+    "frontend": "Фронтенд",
+    "backend": "Бэкенд",
+    "databases": "Базы данных",
+    "devops": "ДевОпс",
+    "other": "Другое"
+  },
+  "projects": {
+    "title": "Проекты",
+    "crmDescription": "Система авторизации и управления пользователями и клиентами",
+    "authDescription": "Авторизация и управление ролями"
+  },
+  "certificates": {
+    "title": "Сертификаты",
+    "fullStack": "Сертификат Full-Stack",
+    "udt": "Сертификат UDT"
+  },
+  "contacts": {
+    "title": "Контакты",
+    "emailLabel": "Электронная почта:",
+    "phoneLabel": "Телефон:"
+  }
+}

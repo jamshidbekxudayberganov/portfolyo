@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "role": "Full-Stack dasturchi"
+  },
+  "about": {
+    "title": "Men haqimda",
+    "description": "Men frontend va backend yo‘nalishlarida tajribaga ega full-stack dasturchiman. PHP, Symfony, JavaScript, MySQL va Vue.js bilan ishlayman hamda loyihalarni noldan yarata olaman. Men 17 yoshdaman va o‘rganish, rivojlanish hamda yangi vazifalarni bajarishga intilaman."
+  },
+  "workEducation": {
+    "title": "Ish va ta’lim",
+    "experienceTitle": "Ish tajribasi",
+    "currentStatus": "Hozircha ishsiz :)",
+    "comingSoon": "Tez kunda...",
+    "workPeriod": "2009 - hozirgacha",
+    "educationTitle": "Ta’lim",
+    "courseTitle": "Junior darajadagi Full-Stack veb-dasturlash",
+    "courseType": "Onlayn kurs",
+    "coursePeriod": "2025 - 2026",
+    "university": "Samarqand davlat universiteti",
+    "universityType": "Onlayn va masofaviy ta’lim",
+    "universityPeriod": "2026 - hozirgacha"
+  },
+  "skills": {
+    "title": "Ko‘nikmalar",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "devops": "DevOps",
+    "other": "Boshqa"
+  },
+  "projects": {
+    "title": "Loyihalar",
+    "crmDescription": "Foydalanuvchilar va mijozlarni boshqarish tizimi",
+    "authDescription": "Avtorizatsiya va rollarni boshqarish"
+  },
+  "certificates": {
+    "title": "Sertifikatlar",
+    "fullStack": "Full-Stack sertifikati",
+    "udt": "UDT sertifikati"
+  },
+  "contacts": {
+    "title": "Aloqa",
+    "emailLabel": "Elektron pochta:",
+    "phoneLabel": "Telefon:"
+  }
+}

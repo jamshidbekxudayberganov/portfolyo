@@ -1,15 +1,28 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import fullStack from './photos/full-stakc.jpg'
 import udt from './photos/udt.jpg'
 
+const { t, locale } = useI18n()
+
+function changeLanguage(language) {
+    locale.value = language
+    localStorage.setItem('portfolio-locale', language)
+}
+const isLanguageMenuOpen = ref(false)
+
+function selectLanguage(language) {
+    changeLanguage(language)
+    isLanguageMenuOpen.value = false
+}
 const certificates = [
     {
-        title: 'Full-Stack Certificate',
+        title: 'certificates.fullStack',
         image: fullStack
     },
     {
-        title: 'UDT Certificate',
+        title: 'certificates.udt',
         image: udt
     }
 ]
@@ -47,11 +60,11 @@ onUnmounted(() => {
             </div>
             <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
                 <h1 class="text-white hero-title">Xudayberganov Jamshidbek</h1>
-                <p class="text-info fs-3">Full-Stack Developer</p>
+                <p class="text-info fs-3">{{ t('hero.role') }}</p>
                 <p class="text-white fs-4 hero-technologies">HTML&CSS • Vue.js • Symfony • PHP • Bootstrap • MySQL</p>
                 <div class="d-flex justify-content-center align-items-center gap-2 hero-buttons">
                     <a href="#projects" class="btn btn-info px-3 py-2">
-                        Projects
+                        {{ t('projects.title') }}
                     </a>
 
                     <a href="#certificates" class="btn btn-outline-light icon-btn" aria-label="Certificates">
@@ -65,53 +78,116 @@ onUnmounted(() => {
                     <a href="#skills" class="btn btn-outline-light icon-btn" aria-label="Skills">
                         <i class="bi bi-database-fill"></i>
                     </a>
+                    <div class="language-dropdown" @click.stop>
+                        <button
+                            type="button"
+                            class="btn btn-outline-light icon-btn"
+                            aria-label="Change language"
+                            :aria-expanded="isLanguageMenuOpen"
+                            @click="isLanguageMenuOpen = !isLanguageMenuOpen"
+                        >
+                            <i class="bi bi-translate"></i>
+                        </button>
+
+                        <div v-if="isLanguageMenuOpen" class="language-options">
+                            <button
+                                class="language-option"
+                                :class="{ active: locale === 'en' }"
+                                @click="selectLanguage('en')"
+                            >
+                                English <span>EN</span>
+                            </button>
+
+                            <button
+                                class="language-option"
+                                :class="{ active: locale === 'uz' }"
+                                @click="selectLanguage('uz')"
+                            >
+                                O‘zbekcha <span>UZ</span>
+                            </button>
+
+                            <button
+                                class="language-option"
+                                :class="{ active: locale === 'ru' }"
+                                @click="selectLanguage('ru')"
+                            >
+                                Русский <span>RU</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row about-section">
             <div class="col-12 col-lg-10 mx-auto text-center mt-5">
-                <h2 class="fs-2 text-white me">About Me</h2>
+                <h2 class="fs-2 text-white me">{{ t('about.title') }}</h2>
                 <p class="text-white ">
-                    I'm a full-stack developer with experience in both frontend and backend development.
-                    I work with PHP, Symfony, JavaScript, MySQL, and Vue.js, and I can build projects from scratch.
-                    I'm 17 years old, an aspiring developer who is eager to learn, grow, and take on new challenges.
+                    {{ t('about.description') }}
                 </p>
             </div>
         </div>
     </div>
+
 
     <section id="work-education" class="work-education-section py-5 mt-5">
         <div class="container">
             <div class="row">
 
                 <div class="col-12 text-center mb-4">
-                    <h2 class="text-white">Work &amp; Education</h2>
+                    <h2 class="text-white">
+                        {{ t('workEducation.title') }}
+                    </h2>
                 </div>
 
                 <div class="col-12 col-lg-6">
-                    <h5 class="text-white mb-3">Work Experience</h5>
+                    <h5 class="text-white mb-3">
+                        {{ t('workEducation.experienceTitle') }}
+                    </h5>
 
                     <div class="list-group">
                         <div class="list-group-item bg-transparent text-white border-info">
-                            <strong>Currently unemployed :)</strong> | Coming Soon...
-                            <div>2009 - Present</div>
-                        </div>
+                            <strong>
+                                {{ t('workEducation.currentStatus') }}
+                            </strong>
+                            |
+                            {{ t('workEducation.comingSoon') }}
 
+                            <div>
+                                {{ t('workEducation.workPeriod') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-12 col-lg-6">
-                    <h5 class="text-white mb-3">Education</h5>
+                    <h5 class="text-white mb-3">
+                        {{ t('workEducation.educationTitle') }}
+                    </h5>
 
                     <div class="list-group">
+
                         <div class="list-group-item bg-transparent text-white border-info">
-                            <strong>Junior Full-Stack Web Development</strong> | Online Course
-                            <div>2025 - 2026</div>
+                            <strong>
+                                {{ t('workEducation.courseTitle') }}
+                            </strong>
+                            |
+                            {{ t('workEducation.courseType') }}
+
+                            <div>
+                                {{ t('workEducation.coursePeriod') }}
+                            </div>
                         </div>
 
                         <div class="list-group-item bg-transparent text-white border-info">
-                            <strong>Samarqand Davlat University </strong> | Online & Distance Learning
-                            <div>2026 - Present</div>
+                            <strong>
+                                {{ t('workEducation.university') }}
+                            </strong>
+                            |
+                            {{ t('workEducation.universityType') }}
+
+                            <div>
+                                {{ t('workEducation.universityPeriod') }}
+                            </div>
                         </div>
 
                     </div>
@@ -123,13 +199,16 @@ onUnmounted(() => {
 
     <section id="skills" class="skills-section py-5">
         <div class="container">
-            <h2 class="text-white text-center mb-5">Skills</h2>
+            <h2 class="text-white text-center mb-5">
+                {{ t('skills.title') }}
+            </h2>
 
             <div class="row g-4 mb-4">
                 <div class="col-12 col-md-4">
                     <div class="skill-card">
                         <h5 class="text-white">
-                            <i class="bi bi-code-slash"></i> Frontend
+                            <i class="bi bi-code-slash"></i>
+                            {{ t('skills.frontend') }}
                             <ul class="mt-2 fs-6">
                                 <li>HTML5&CSS3</li>
                                 <li>JavaScript</li>
@@ -143,7 +222,8 @@ onUnmounted(() => {
                 <div class="col-12 col-md-4">
                     <div class="skill-card">
                         <h5 class="text-white">
-                            <i class="bi bi-server"></i> Backend
+                            <i class="bi bi-server"></i>
+                            {{ t('skills.backend') }}
                             <ul class="mt-2 fs-6">
                                 <li>PHP/Symfony</li>
                                 <li>JWT/AUTH</li>
@@ -155,7 +235,8 @@ onUnmounted(() => {
                 <div class="col-12 col-md-4">
                     <div class="skill-card">
                         <h5 class="text-white">
-                            <i class="bi bi-database"></i> Databases
+                            <i class="bi bi-database"></i>
+                            {{ t('skills.databases') }}
                             <ul class="mt-2 fs-6">
                                 <li>MySQL</li>
                                 <li>MariaDB</li>
@@ -170,7 +251,8 @@ onUnmounted(() => {
                 <div class="col-12 col-md-6">
                     <div class="skill-card">
                         <h5 class="text-white">
-                            <i class="bi bi-box"></i> DevOps
+                            <i class="bi bi-box"></i>
+                            {{ t('skills.devops') }}
                             <ul class="mt-2 fs-6">
                                 <li>Linux Expirience</li>
                                 <li>Terminal skills</li>
@@ -183,7 +265,7 @@ onUnmounted(() => {
                 <div class="col-12 col-md-6">
                     <div class="skill-card">
                         <h5 class="text-white">
-                            <i class="bi bi-tools"></i> Other
+                            <i class="bi bi-tools"></i> {{ t('skills.other') }}
                             <ul class="mt-2 fs-6">
                                 <li>Git/GitHub/Gitlab</li>
                                 <li>Swagger/Api Docs</li>
@@ -200,21 +282,27 @@ onUnmounted(() => {
             <div class="row g-4">
 
                 <div class="col-12 text-center mb-3">
-                    <h2 class="text-white">Projects</h2>
+                    <h2 class="text-white">
+                        {{ t('projects.title') }}
+                    </h2>
                 </div>
 
                 <div class="col-12 col-md-6">
                     <div class="project-card h-100">
                         <h5 class="text-white">📚 CRM App</h5>
                         <p class="text-white">Vue.js + Pinia + API</p>
-                        <p class="text-white mb-3">Authorization And User & Client Management System </p>
+                        <p class="text-white mb-3">
+                            {{ t('projects.crmDescription') }}
+                        </p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="project-card h-100">
                         <h5 class="text-white">🔐 Auth System</h5>
                         <p class="text-white">Symfony + JWT</p>
-                        <p class="text-white mb-3">Authorization and roles</p>
+                        <p class="text-white mb-3">
+                            {{ t('projects.authDescription') }}
+                        </p>
                     </div>
                 </div>
 
@@ -223,7 +311,9 @@ onUnmounted(() => {
     </section>
     <section id="certificates" class="certificates-section py-5">
         <div class="container">
-            <h2 class="text-white text-center mb-4">Certificates</h2>
+            <h2 class="text-white text-center mb-4">
+                {{ t('certificates.title') }}
+            </h2>
 
             <div class="certificate-carousel">
                 <button
@@ -239,12 +329,12 @@ onUnmounted(() => {
                     <div :key="activeIndex" class="certificate-slide">
                         <img
                             :src="certificates[activeIndex].image"
-                            :alt="certificates[activeIndex].title"
+                            :alt="t(certificates[activeIndex].title)"
                             class="certificate-image"
                         >
 
                         <p class="text-white mt-2">
-                            {{ certificates[activeIndex].title }}
+                            {{ t(certificates[activeIndex].title) }}
                         </p>
                     </div>
                 </Transition>
@@ -264,16 +354,18 @@ onUnmounted(() => {
     <section id="contacts" class="contacts-section py-5">
         <div class="container text-center">
 
-            <h2 class="text-white mb-3">Contacts</h2>
+            <h2 class="text-white mb-3">
+                {{ t('contacts.title') }}
+            </h2>
 
             <p class="text-white mb-4">
-                <strong>Email:</strong>
+                <strong>{{ t('contacts.emailLabel') }}</strong>
                 <a href="mailto:xudayberganov050@gmail.com" class="contact-email">
                     xudayberganov050@gmail.com
                 </a>
             </p>
             <p class="text-white mb-4">
-                <strong>Phone:</strong>
+                <strong>{{ t('contacts.phoneLabel') }}</strong>
                 <a href="tel:+998950717627" class="contact-email">
                     +998950717627
                 </a>
@@ -492,5 +584,45 @@ body::before{
         padding: 5px;
     }
 }
+.language-dropdown {
+    position: relative;
+    display: inline-flex;
+}
 
+.language-options {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    padding: 6px;
+    background: rgba(5, 17, 30, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+}
+
+.language-option {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 11px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+}
+
+.language-option:hover,
+.language-option.active {
+    background: rgba(13, 202, 240, 0.18);
+    color: #0dcaf0;
+}
+
+.language-option span {
+    opacity: 0.65;
+    font-size: 12px;
+}
 </style>

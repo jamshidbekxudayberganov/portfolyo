@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "role": "Full-Stack Developer"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a full-stack developer with experience in both frontend and backend development. I work with PHP, Symfony, JavaScript, MySQL, and Vue.js, and I can build projects from scratch. I'm 17 years old, an aspiring developer who is eager to learn, grow, and take on new challenges."
+  },
+  "workEducation": {
+    "title": "Work & Education",
+    "experienceTitle": "Work Experience",
+    "currentStatus": "Currently unemployed :)",
+    "comingSoon": "Coming Soon...",
+    "workPeriod": "2009 - Present",
+    "educationTitle": "Education",
+    "courseTitle": "Junior Full-Stack Web Development",
+    "courseType": "Online Course",
+    "coursePeriod": "2025 - 2026",
+    "university": "Samarkand State University",
+    "universityType": "Online & Distance Learning",
+    "universityPeriod": "2026 - Present"
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "devops": "DevOps",
+    "other": "Other"
+  },
+  "projects": {
+    "title": "Projects",
+    "crmDescription": "Authorization And User & Client Management System",
+    "authDescription": "Authorization and roles"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "fullStack": "Full-Stack Certificate",
+    "udt": "UDT Certificate"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "emailLabel": "Email:",
+    "phoneLabel": "Phone:"
+  }
+}
